@@ -92,9 +92,10 @@ subtrahiert wird. Die Elemente der Zeile $k$ werden also nach
 der Regel
 \begin{equation}
 a_{kj}' = a_{kj} - a_{ki}a_{ij}' 
-=a_{kj} - a_{ki}\frac{a_{ij}}{a_{ii}}.
+=a_{kj} - a_{ki}\frac{a_{ij}}{a_{ii}}
 \label{blue}
 \end{equation}
+neu berechnet.
 Damit werden alle Elemente unter dem Pivot-Elemente zu 0 gemacht.
 
 Durch Wiederholung der Operationen (\ref{red}) und (\ref{blue}) f"ur
@@ -116,7 +117,7 @@ Man nennt den bisher durchgef"uhrten Teil die Vorw"arts-Reduktion.
 Um die rechte obere H"alfte auch noch zu 0 zu machen,
 m"ussen weitere Zeilenoperationen angewendet werden. Man nennt diese
 Phase des Algorithmus das R"uckw"artseinsetzen.
-Da die Diagonal-Elemente immer noch Wert 1 haben, kann dies in Spalte
+Da die Diagonal-Elemente bereits den Wert 1 haben, kann dies in Spalte
 $i$ mit den Ersetzungen
 \begin{equation}
 a_{kj}'' = a_{kj}' - a_{ki}'a_{ij}'
@@ -186,7 +187,7 @@ der Pivot-Zeile multipliziert werden, bevor sie von der Zeile $k$ subtrahiert
 werden, wird nach dieser Zeilen-Operation gar nicht mehr ben"otigt.
 Die ganze Spalte $i$ wird nach der Zeilen-Operation nicht mehr ben"otig,
 daher m"ussen die Operationen (\ref{blue}) auf die Spalte gar nicht
-angewendet werden. Damit verschiendet auch das Problem.
+angewendet werden. Damit verschwindet auch das Problem.
 \end{enumerate}
 
 Je sp"ater im Algorithmus ein Gauss-Schritt ausgef"uhrt wird, desto
@@ -263,7 +264,7 @@ for (i = 0; i < N; i++) {
         }
 }
 \end{verbatim}
-Er berechnet die Summe aller Werte im Array {\tt a}, das Maximum und den
+Es berechnet die Summe aller Werte im Array {\tt a}, das Maximum und den
 Index des gr"ossten Wertes.
 Eine Parallelisierung dieser Schleife hat mit folgenden Schwierigkeiten
 fertig zu werden:
@@ -375,7 +376,7 @@ damit sie f"ur die Cluster-Infrastruktur sinnvoll werden.
 \rhead{Pthreads}
 \index{Pthreads}
 Posix Threads sind das standardisierte API f"ur Thread-Programmierung
-und Posix-Systemen.
+auf Posix-Systemen.
 Das API ist vollst"andig in den Manual-Pages dokumentiert, wir gehen
 daher nur auf die Funktionen ein, die f"ur die Beispielimplementation
 ben"otigt werden. Im Laufe der Rechnung muss eine Anzahl von Threads
@@ -537,10 +538,11 @@ Die von Ihnen erzeugten Cache-Zugriffe sind daher ungeordnet, jeder
 Thread greift ``wild'' durch den ganzen Cache hindurch, so dass
 der Performance-Gewinn durch den Cache ausbleibt.
 \end{itemize}
-Ausserdem kann man ablesen, dass bei kleinen Problemgr"ossen 
-alle Threads zu starten und wieder zu beenden, einen wesentlichen 
-Mehraufwand bedeutet, der die Laufzeit eines Algorithmus mit nur
-einem Thread deutlich "ubersteigt.
+Ausserdem kann man ablesen, dass bei kleinen Problemgr"ossen der
+Aufwand,
+alle Threads zu starten und wieder zu beenden, betr"achtlich ist.
+Er kann die Laufzeit eines Algorithmus mit nur
+einem Thread deutlich "ubersteigen.
 
 \section{OpenMP\label{openmp-intro}}
 \rhead{OpenMP}
@@ -649,7 +651,7 @@ F"ur einige Beschleunigersystem ist der Begriff eines Threads nicht
 sinnvoll, es z"ahlt nur die Berechnung, die durchgef"uhrt worden ist.
 Daher verwendet OpenCL ein Ausf"uhrungsmodell, welches sich nicht
 an den Ausf"uhrungseinheiten und ihren Threads orientert, sondern an
-der gesamten durchzuf"uhrenden Berechnung.
+der gesamten durchzuf"uhrenden Berechnungsarbeit.
 
 \subsubsection{Work-Items und Kernel}
 \index{Kernel}
@@ -745,7 +747,7 @@ G_z/S_z&\verb+get_num_groups(i)+\\
 
 \subsubsection{Speichermodell}
 Work-Groups beinhalten untereinander synchronisierbare Work-Items.
-Bei der Abarbeitung dieser Work-Items einer Work-Group werden
+Bei der Abarbeitung der Work-Items einer Work-Group werden
 lokale Variablen gebraucht,
 die die Arbeit in anderen Work-Items nichst st"oren d"urfen.
 Solche Variablen beinhalten also Daten, die f"ur jedes Work-Item
@@ -1008,7 +1010,7 @@ wird dadurch das Resultat falsch.
 Die Implementation von AMD und Intel rechnen beide nur mit der CPU%
 \footnote{Beide OpenCL Implementation k"onnen nat"urlich auch Graphikkarten
 der jeweiligen Hersteller bedienen, nur standen f"ur die Messungen
-keine solche zur Verf"ugung. Intel OpenCL kann auch den neueren Intel Phi
+keine solchen zur Verf"ugung. Intel OpenCL kann auch den neueren Intel Phi
 Koprozessor unterst"utzen.}.
 Es ist daher nicht "uberraschend, dass die erreichte Geschwindigkeit
 vergleichbar ist, es "uberrascht aber doch, dass die Performance mit
