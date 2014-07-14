@@ -7,7 +7,7 @@ und visualisiert werden.
 Dieses Kapitel diskutiert einige Techniken, wie man in einem HPC-Problem
 mit der Datenflut umgehen kann.
 
-\section{Kennzahlen}
+\section{Kennzahlen\label{section-kennzahlen}}
 Eine Str"omungssimulation produziert f"ur jeden Punkt des Raumes und
 f"ur jeden Zeitpunkt Werte f"ur Druck, Temperatur und Geschwindigkeit.
 Selbst f"ur ein kleines Problem entsteht so eine Flut von Daten, die
@@ -45,7 +45,7 @@ wie Temperatur, Druck oder Dichte.
 
 Die Resultate der Simulation m"ussen also noch aufgearbeitet werden, um
 solche makroskopische Gr"ossen zu bestimmen.
-Zum Beispiel ist der Druck der mittlere Impuls, in einer Zeiteinheit
+Zum Beispiel ist der Druck der mittlere Impuls, der in einer Zeiteinheit
 auf die Wand "ubertragen wird.
 Ein einfache Summe "uber die Normalkomponenten der Geschwindigkeiten
 derjenigen Teilchen, die in einem Zeitinterval mit der Wand zusammenstossen,
@@ -115,14 +115,15 @@ Simulationsresultate erm"oglichen.
 \section{Datenspeicherung}
 Die Resultate einer Simulation k"onnen oft nicht vollst"andig gespeichert
 werden, die Datenmenge ist m"oglicherweise schlicht zu gross.
-Manchmal ist jedoch trotz allem eine substantielle Datenmenge zu
+Manchmal ist auch nach Anwendung geeigneter Reduktionsmethoden wie
+in Abschnitt~\ref{section-kennzahlen} trotz eine substantielle Datenmenge zu
 speichern, und es m"ussen Wegen gefunden werden, dass diese Daten
 effizient weiterverarbeit werden k"onnen.
 
 \subsection{Datenbanken}
 Datenbanken k"onnen grosse Mengen von Daten speichern und insbesondere
 beliebige Auswahlen davon schnell zur"uckgeben.
-Im allgemeinen sind relationale Datenbanken jedoch relativ 
+Im Allgemeinen sind relationale Datenbanken jedoch relativ 
 schwerf"allig zu handhaben, so dass die direkte Speicherung
 der Daten in Files einfacher ist.
 
@@ -141,7 +142,7 @@ zu k"onnen.
 
 \subsection{Fileformate}
 Wie speichert man die Daten in Files, wenn doch einmal alle Resultate
-gespeichert werden m"ussen.
+gespeichert werden m"ussen?
 Nat"urlich kann man sich nach Bedarf irgendwelche Datenformate zurechtlegen,
 das bedeutet aber auch, dass man geeignete Software f"ur die
 Weiterverarbeitung selber schreiben muss, was selten effizient ist.
@@ -227,8 +228,8 @@ if (NC_NOERR != (status = nc_enddef(fileid))) {
 Jetzt k"onnen die Daten geschrieben werden, am effizientesten mit der
 Funktion \verb+nc_put_vara+. Diese erlaubt, gr"ossere Datenbl"ocke
 zu schreiben.
-Im Beispiel ganze Datenbl"ocke, die Arrays {\tt start} und {\tt size}
-beinhalten die Information, wie gross die zu schreibenden Datenbl"ocke
+Im Beispiel beinhalten die Arrays {\tt start} und {\tt size}
+die Information, wie gross die zu schreibenden Datenbl"ocke
 sein sollen:
 \begin{verbatim}
 size_t  start[3] = { t, 0, 0 };
