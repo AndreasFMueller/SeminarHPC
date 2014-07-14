@@ -120,7 +120,11 @@ z_1=f(z_0),\;z_2=f(z_1),\;z_3=f(z_2)\;\dots, z_{n+1}=f(z_n),\;\dots
 \]
 F"ur $|z|\ge |c|$ und $|z|\ge 3$ folgt
 \[
-|f_c(z)|= |z^2+c|\ge |z|^2-|c|\ge |z|^2-|z|=|z|(|z|-1)\ge |z|\ge 2|z|.
+|f_c(z)|= |z^2+c|\ge |z|^2-|c|\ge |z|^2-|z|=|z|(|z|-1)\ge |z|\ge 2|z|
+\quad
+\Rightarrow
+\quad
+|f_c^n(z)| \ge 2^n|z|.
 \]
 Die Iterierten von $z_n$ wachsen exponentiell schnell "uber alle Grenzen.
 
@@ -162,7 +166,7 @@ z_n=r^{2^n}e^{2^ni\varphi},\dots
 \]
 Wenn $r < 1$ ist, dann werden die Iterierten $z_n$ immer kleiner, die
 Folge konvergiert gegen $0$.
-Falls $r>1$ dann wachsen die Iterierten "uber alle Grenzen.
+Falls $r>1$ ist, wachsen die Iterierten "uber alle Grenzen.
 Im Falle $r=1$ bleiben die Iterierten auf dem Einheitskreis.
 Die komplexe Ebene wird also in drei Bereiche geteilt: das
 Innere des Einheitskreises besteht aus Zahlen, deren Iterierte gegen
@@ -188,7 +192,7 @@ Verhalten \cite{julia:devaney}.
 Die Julia-Mengen werden derart kompliziert, dass man ihnen keine ganzzahlige
 Dimension mehr zuweisen kann. Vergr"ossert man einen Ausschnitt, werden
 immer mehr Details sichtbar, die ``Kurve'' wird immer komplizierter.
-Ist ist oft m"oglich, den Julia-Mengen eine gebrochenzahlen Dimension
+Es ist oft m"oglich, den Julia-Mengen eine gebrochenzahlen Dimension
 zuzuweisen.
 Die Definition dieser gebrochenzahligen Dimensionen ist nicht ganz
 selbstverst"andlich, Mengen mit gebrochenzahliger Dimension treten
@@ -279,9 +283,9 @@ Julia-Menge.
 Verfolgt man die Iteration r"uckw"arts, also indem man eine Folge
 $\tilde z_{n+1}=f_c^{-1}(\tilde z_n)$ konstruiert, dann n"ahern sich die
 Punkte der Julia-Menge. Indem man die Punkte $\tilde z_n$ f"ur grosse $n$
-plottet, erh"alt man eine Apprxomation der Julia-Menge.
+plottet, erh"alt man eine Approximation der Julia-Menge.
 
-Die Konstruktion der Folge $\tilde z_n$ ist nicht eindeugt, denn die
+Die Konstruktion der Folge $\tilde z_n$ ist nicht eindeutig, denn die
 Gleichung
 \[
 z_n= f_c(z_{n+1})=\tilde z_{n+1}^2+c
@@ -316,7 +320,7 @@ auch bekannt als Park-Miller Generator, reicht v"ollig aus.
 
 Die inverse Iteration f"uhrt f"ur stark verzweigte Julia-Mengen nicht
 zu guten Resultaten.
-Man kann dies dank der fraktalen Natur der Julia-Menge verstehen.
+Man kann dies mit der fraktalen Natur der Julia-Menge verstehen.
 Beginnt man mit einer geschlossenen Kurve $\gamma_0$ in $\mathbb C$,
 dann sind die Urbilder $\gamma_{n+1} = f_c(\gamma_n)$ jeweils Vereinigungen
 von geschlossenen Kurven, die die Julia-Menge immer besser Approximieren.
