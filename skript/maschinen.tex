@@ -23,7 +23,7 @@ Eine hervorragende Referenz dazu ist das Buch von Hager und Wellein
 Moderne Computer sind praktisch immer Multiprozessor- oder mindestens
 Multicore-System mit aufgeteiltem Hauptspeicher (Abbildung~\ref{numa}).
 Es besteht jedoch eine Diskrepanz zwischen der Sicht des Programmierers
-auf ein solches System, und der Realit"at.
+auf ein solches System und der Realit"at.
 
 \subsection{Illusion 1: Es gibt einen einzigen grossen Speicher}
 Der Programmierer geht typischerweise davon aus, dass er einen einzigen
@@ -42,7 +42,7 @@ Von einer anderen CPU aus ist der Zugriff dagegen langsamer, da er
 
 Wird der Prozess sp"ater auf eine andere CPU migriert, kann er pl"otzlich
 langsamer laufen. Um diesem negativen Effekt vorzubeugen, m"ussen
-f"ur HPC geeignete Betreibssyteme daher dem Programmierer auch die
+f"ur HPC geeignete Betreibssyteme dem Programmierer auch die
 Kontrolle dar"uber geben auszudr"ucken, auf welcher CPU der Prozess laufen
 soll.
 
@@ -55,7 +55,7 @@ in drei Ebenen.
 
 Auf der ersten Ebene (L1) verwendet
 jedes CPU-Core einen typischerweise sehr kleinen Cache von wenigen
-kB. Diese Cache unterscheidet zwischen Daten und Instruktionen.
+kB. Dieser Cache unterscheidet zwischen Daten und Instruktionen.
 Dies lohnt sich, weil gerade auch im HPC-Bereich der Code, der die
 Hauptarbeit leistet, sehr klein ist.
 Die Datenmenge dagegen ist oft viel gr"osser, als der Cache fassen kann.
@@ -77,7 +77,7 @@ Auf der dritten Ebene finden wir einen Cache, der von allen Cores einer
 CPU gemeinsam genutzt wird. Dieser Cache muss die Performance-L"ucke
 zwischen CPU und Hauptspeicher "uberbr"ucken.
 Er muss gross genug sein, dass die Aktivit"aten der einzelnen Cores einen
-n"utzlichen Teil ihrer Daten und Instruktionen in diesem Cache finden 
+n"utzlichen Teil ihrer Daten und Instruktionen darin finden 
 k"onnen. 
 
 Ausserhalb des Prozessors findet man weitere Asymmetrien.
@@ -139,7 +139,7 @@ Typischerweise ist dies bei bedingten Spr"ungen der Fall, wo der
 Schaden am gr"ossten ist, weil bereits der erste Schritt der Pipeline,
 das Lesen der Instruktion, nicht ausgef"uhrt werden kann, weil noch nicht
 bekannt ist, welche Instruktion als n"achste ausgef"uhrt werden muss.
-Aber auch bei anderen bedingten Instruktionen kann as zu sogenannten
+Aber auch bei anderen bedingten Instruktionen kann es zu sogenannten
 Pipeline-Blasen oder Pipeline-Stalls kommen.
 \begin{figure}
 \begin{center}
@@ -156,7 +156,7 @@ Pipeline-Blasen oder Pipeline-Stalls kommen.
 \end{minipage}
 \end{tabular}
 \end{center}
-\caption{Bubble in einer Pipeline ausgel"ost durch eine Abh"ngigkeit
+\caption{Bubble in einer Pipeline ausgel"ost durch eine Abh"angigkeit
 (Bildquelle: Wikipedia)
 \label{pipelinestall}}
 \end{figure}
@@ -170,7 +170,7 @@ Code formulieren kann, so dass er der Realit"at besser Rechnung tr"agt.
 \index{Datenlokalitat@Datenlokalit\"at}
 Die Daten im Speicher sollen so angeordnet werden, dass die Zugriff w"ahrend
 der Rechnung m"oglichst lange einen m"oglichst kleinen Adressbereich umfassen,
-so dass Die Arbeit im Cache erfolgen kann.
+so dass die Arbeit im Cache erfolgen kann.
 Oft arbeitet sich ein Programm in Schritten gleicher Gr"osse durch die
 Daten.
 Dabei kann es geschehen, dass die Schrittweite daf"ur sorgt, dass der
@@ -227,7 +227,7 @@ for (int i = 0; i < length; i += 4) {
         b[i + 3] = a[i + 3];
 }
 \end{verbatim}
-Jetzt ist nur noch in jedem vierten Schleifendurchgang mit einem Pipeline-Stall
+Jetzt ist nur noch bei jedem vierten kopierten Byte mit einem Pipeline-Stall
 zu rechnen.
 
 Nat"urlich hat dieser Code noch weitere Verbesserungsm"oglichkeiten.
@@ -254,7 +254,7 @@ for (int i = 0; i < length; i += 4 * sizeof(long)) {
 }
 \end{verbatim}
 Nat"urlich wurde im obigen Code immer angenommen, dass die L"ange durch
-die $4$ bzw.~\verb+4 * sizeof(long)+ teilbar ist.
+$4$ bzw.~\verb+4 * sizeof(long)+ teilbar ist.
 Andernfalls m"ussen die letzten Bytes einer solche Kopieroperation mit
 dem ``langsamen'' Algorithmus kopiert werden.
 
@@ -267,7 +267,7 @@ einen Compiler verlassen.
 
 Das Betriebssystem Solaris treibt diese Idee auf die Spitze:
 Es verwendet f"ur jeden Prozessortyp optimierte
-Funktionen, die aus einer Prozessorspezifischen Bibliothek
+Funktionen, die aus einer prozessorspezifischen Bibliothek
 im Verzeichnis \verb+/platform+ gelesen werden.
 \end{beispiel}
 
@@ -314,12 +314,13 @@ aus anderen Hardware-Komponenten verf"ugbar:
 die die gleichen Rechenoperationen parallel mit einer Reihe von Datenelementen
 durchf"uhren k"onnen.
 Da ein einzelner Instruktionsstrom die Verarbeitung mehrerer Datenstr"ome
-steuert, spricht von SIMD: Single Instruction Multiple Data.
+steuert, spricht man von SIMD: Single Instruction Multiple Data.
 \index{SIMD}
 Ohne spezielle Unterst"utzung durch Programmierumgebungen sind diese
 Vektoreinheiten nur durch Assembler-Programmierung nutzbar, was den
-Code unportable und schwer wartbar macht.
-OpenMP unterst"utzt SIMD einheiten mit den {\tt simd} Direktiven.
+Code unportabel und schwer wartbar macht.
+OpenMP (siehe Abschnitt~\ref{openmp-intro}) unterst"utzt SIMD einheiten
+mit den {\tt simd} Direktiven.
 \item 3D-Graphikkarten m"ussen f"ur die Darstellung einer dreidimensionalen
 \index{Graphikkarten}
 Szene eine grosse Zahl von Operationen mit 3D-Vektoren durchf"uhren. 
