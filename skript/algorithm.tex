@@ -73,7 +73,7 @@ Gesucht ist eine Funktion $u(x,y)$, welche auf dem Einheitsquadrat
 $\Omega = \{(x,y)\,|\, 0\le x,y\le 1\}$ definiert ist und auf dem Rand bestimmte
 vorgegebene Werte annimmt:
 \begin{equation}
-u(x,y)=g(x,y)\qquad x\in\partial \Omega,
+u(x,y)=g(x,y)\qquad \text{f"ur $x\in\partial \Omega$,}
 \label{motivation-randbedingung}
 \end{equation}
 wobei $\partial\Omega$ der Rand des Gebietes $\Omega$ ist. Die allgemeine
@@ -146,7 +146,7 @@ man kann sie zur rechten Seite der Gleichungen schlagen,
 so dass nur noch die Werte $u_{ij}$ an inneren Knotenstellen $0<i,j<n$
 zu bestimmen.
 
-Wir numerieren wir die verbleibenden Unbekannten neu mit einem
+Wir numerieren die verbleibenden Unbekannten neu mit einem
 einzigen Index und nennen sie $U_k$,
 \begin{equation}
 \left.
@@ -783,7 +783,7 @@ A=\begin{pmatrix}-2&1&0\\1&-2&1\\0&1&-2\end{pmatrix}.
 \]
 
 Wir beginnen mit dem Vektor $u_0 =(1, 1, 1)^t$ und wenden die Iteration
-(\ref{potenz-iteration}) widerholt darauf an. Dabei erhalten wir die
+(\ref{potenz-iteration}) wiederholt darauf an. Dabei erhalten wir die
 Vektoren
 \begin{center}
 \begin{tabular}{|>{$}r<{$}|>{$}r<{$}>{$}r<{$}>{$}r<{$}|}
@@ -1283,8 +1283,8 @@ J(x_1+sp)
 \\
 &=s^2\cdot \underbrace{\frac12 p^tAp}_{\text{``$a$''}} + s\cdot \underbrace{(p^tAx_1-p^tb)}_{\text{``$b$''}} +\underbrace{\frac12 x_1^tAx_1 -x_1^tb}_{\text{``$c$''}}
 \end{align*}
-Eine quadratische Funktion der Form $ax^2+bx+c$ mit $a>0$ erreicht ihr
-Minimum bei $-b/2a$. Somit ist die beste Wahl von $s$
+Eine quadratische Funktion der Form $as^2+bs+c$ mit $a>0$ erreicht ihr
+Minimum bei $s=-b/2a$. Somit ist die beste Wahl von $s$
 \[
 s=-\frac{p^t(Ax_1-b)}{p^tAp}.
 \]
