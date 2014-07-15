@@ -354,6 +354,13 @@ FPGA zur Laufzeit programmiert.
 Damit wird es m"oglich, ein Rechenresultat mit jedem Taktzyklus 
 zu bekommen.
 \end{itemize}
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.8\hsize]{images/opencl-platform.pdf}
+\end{center}
+\caption{Hardware-Struktur f"ur OpenCL (Bildquelle: OpenCL Spezifikation)
+\label{hardware:opencl}}
+\end{figure}
 
 Den Programmablauf steuert immer noch die CPU, aber besonders
 rechenaufwendige Schritte werden in Beschleuniger ausgelagert.
@@ -376,13 +383,6 @@ darauf zugreifen. Gibt ein Programm im Laufe der Rechnung die Kontrolle
 gewinnen, und so die Fortf"uhrung der Berechnung verhindern.
 \item Die Beschleuniger verwenden m"oglicherweise abweichende Arithmetik.
 \end{enumerate}
-\begin{figure}
-\begin{center}
-\includegraphics[width=0.8\hsize]{images/opencl-platform.pdf}
-\end{center}
-\caption{Hardware-Struktur f"ur OpenCL (Bildquelle: OpenCL Spezifikation)
-\label{hardware:opencl}}
-\end{figure}
 Die Open Compute Language (OpenCL) hat sich zur Aufgabe gemacht, den
 \index{OpenCL}
 Zugang zu solchen Beschleunigersystemen zu vereinheitlichen.
